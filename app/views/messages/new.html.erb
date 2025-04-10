@@ -1,2 +1,14 @@
-<h1>Messages#new</h1>
-<p>Find me in app/views/messages/new.html.erb</p>
+<!-- app/views/messages/new.html.erb -->
+<h1>新規投稿</h1>
+
+<%= form_with(model: @message, local: true) do |form| %>
+  <div>
+    <%= form.label :content, "内容" %><br>
+    <%= form.text_area :content, rows: 5 %>
+  </div>
+  <div>
+    <%= form.submit "投稿する" %>
+  </div>
+<% end %>
+
+<%= link_to "一覧に戻る", messages_path %>
