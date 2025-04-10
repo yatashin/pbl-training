@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  get 'messages/index'
-  get 'messages/new'
-  get 'messages/create'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # ルートパスをメッセージ一覧に設定
+  root "messages#index"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # RESTfulなルーティングを採用
+  resources :messages, only: [:index, :new, :create]
+
+  # アプリのヘルスチェック用ルーティング（変更不要）
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end
